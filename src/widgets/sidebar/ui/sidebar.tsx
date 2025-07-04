@@ -13,11 +13,11 @@ const Sidebar: FC = () => {
   const { documentView } = useDocumentView();
 
   useEffect(() => {
-    const { matches } = window.matchMedia("(max-width: 768px)");
-
-    if (matches) {
-      setIsSidebarHidden(true);
-    }
+    queueMicrotask(() => {
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        setIsSidebarHidden(true);
+      }
+    });
   }, [location]);
 
   useEffect(() => {

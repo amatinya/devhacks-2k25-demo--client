@@ -16,7 +16,7 @@ const TemplatesPage: FC = () => {
         title={"Templates"}
         backgroundImageSrc={"/bg-one.png"}
         description={
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, sint, voluptatem. Ab animi at consequuntur, dicta dolorum enim expedita fugit illo nam officiis perferendis quis repellat, repellendus sint tempore unde!"
+          "Templates are the foundation of your documents. Upload or create reusable formats with variables, ready to be filled by your AI assistant. Design once, and generate consistent, professional documents every time"
         }
       >
         <UploadTemplate />

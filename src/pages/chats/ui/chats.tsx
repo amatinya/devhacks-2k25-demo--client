@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { Page } from "@/widgets/page";
 import { usePageTitle } from "@/shared/hooks";
 import { Hero } from "@/widgets/hero";
+import { StartChat } from "@/features/chats";
 
 const Chats: FC = () => {
   usePageTitle({ title: "Chats" });
@@ -13,9 +14,11 @@ const Chats: FC = () => {
         backgroundImageSrc={"/bg-three.png"}
         title={"Chats"}
         description={
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, sint, voluptatem. Ab animi at consequuntur, dicta dolorum enim expedita fugit illo nam officiis perferendis quis repellat, repellendus sint tempore unde!"
+          "Converse with your AI assistant to generate documents, ask questions, or refine templates through natural language. Each chat becomes a workspace where ideas turn into structured files. It’s like having a smart editor by your side, 24/7"
         }
-      />
+      >
+        <StartChat />
+      </Hero>
     </Page>
   );
 };

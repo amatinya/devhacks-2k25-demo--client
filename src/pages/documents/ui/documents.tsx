@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { Page } from "@/widgets/page";
 import { usePageTitle } from "@/shared/hooks";
 import { Hero } from "@/widgets/hero";
+import { GenerateDocument } from "@/features/documents";
 
 const Documents: FC = () => {
   usePageTitle({ title: "Documents" });
@@ -13,9 +14,11 @@ const Documents: FC = () => {
         backgroundImageSrc={"/bg-two.png"}
         title={"Documents"}
         description={
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, sint, voluptatem. Ab animi at consequuntur, dicta dolorum enim expedita fugit illo nam officiis perferendis quis repellat, repellendus sint tempore unde!"
+          "This is where all your generated documents live. Whether it's a simple letter or a complex contract, every file created by your assistant is saved here for easy access, download, and management"
         }
-      />
+      >
+        <GenerateDocument />
+      </Hero>
     </Page>
   );
 };
