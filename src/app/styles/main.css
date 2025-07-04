@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Ubuntu", "sans-serif";
+}
+
+@layer utilities {
+  .bg-ai-radial {
+    background-image:
+      radial-gradient(37.44% 109.75% at 82.64% 95.34%, #0acf8314, #0acf8300),
+      radial-gradient(40.33% 118.22% at 63.8% 105.93%, #1abcfe1f, #1abcfe00),
+      radial-gradient(39.75% 116.53% at 38.2% 108.9%, #a259ff33, #a259ff00),
+      radial-gradient(41.2% 120.76% at 15.5% 100%, #f24e1e1f, #f24e1e00);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .ray-gradient {
+    --gradient-opacity: 0.1;
+    --ray-gradient: radial-gradient(rgba(83, 196, 255, var(--gradient-opacity)) 0%, rgba(43, 166, 255, 0) 100%);
+    background: var(--ray-gradient);
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    user-select: none;
+    z-index: 10;
+  }
+}
+
+body {
+  @apply font-display bg-black text-sm text-gray-50;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+/* Scrollbars */
+
+::-webkit-scrollbar {
+  @apply h-2 w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full border-2 border-transparent bg-teal-700 bg-clip-content;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-teal-600;
+}
