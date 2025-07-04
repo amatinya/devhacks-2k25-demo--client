@@ -3,14 +3,14 @@ import { type FC } from "react";
 import { Page } from "@/widgets/page";
 import { usePageTitle } from "@/shared/hooks";
 
-const Home: FC = () => {
-  usePageTitle(undefined);
+const Chats: FC = () => {
+  usePageTitle({ title: "Chats" });
 
   return (
     <Page>
-      <h1>Home</h1>
+      <h1>Chats</h1>
     </Page>
   );
 };
 
-export default Home;
+export default Chats;

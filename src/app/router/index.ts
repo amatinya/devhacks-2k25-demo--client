@@ -1,1 +1,1 @@
-export { default as browserRouter } from "./browser-router";
+export { default as browserRouter } from "./browser-router.tsx";
