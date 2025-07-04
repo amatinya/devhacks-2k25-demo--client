@@ -8,7 +8,9 @@ const Home: FC = () => {
 
   return (
     <Page>
-      <h1>Home</h1>
+      {Array.from({ length: 32 }).map((_, idx) => (
+        <h1 key={idx}>{"Home"}</h1>
+      ))}
     </Page>
   );
 };

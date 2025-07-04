@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 
-import { Routes } from "@/shared/enums";
+import { Routes } from "@/shared/constants";
 import { homeRoute } from "@/pages/home";
 import { templatesRoute } from "@/pages/templates";
 import { documentsRoute } from "@/pages/documents";

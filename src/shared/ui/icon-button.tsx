@@ -22,7 +22,7 @@ interface ButtonProps extends BaseProps, ComponentProps<"button"> {
 const IconButton: FC<LinkProps | ButtonProps> = (props) => {
   const { icon: Icon, variant = "ghost", size = "md", isLoading = false, ...rest } = props;
 
-  const iconsSize = { sm: 16, md: 16, lg: 20 } as const;
+  const iconsSizes = { sm: 16, md: 16, lg: 20 } as const;
 
   if (props.as === "link") {
     const { to, className: linkClassName, ...restLinkProps } = rest as LinkProps;
@@ -39,9 +39,9 @@ const IconButton: FC<LinkProps | ButtonProps> = (props) => {
         {...restLinkProps}
       >
         {isLoading ? (
-          <Loader size={iconsSize[size]} strokeWidth={1.5} className={"animate-spin"} />
+          <Loader size={iconsSizes[size]} strokeWidth={1.5} className={"animate-spin"} />
         ) : (
-          <Icon size={iconsSize[size]} strokeWidth={1.5} />
+          <Icon size={iconsSizes[size]} strokeWidth={1.5} />
         )}
       </Link>
     );
@@ -63,9 +63,9 @@ const IconButton: FC<LinkProps | ButtonProps> = (props) => {
       {...restButtonProps}
     >
       {isLoading ? (
-        <Loader size={iconsSize[size]} strokeWidth={1.5} className={"animate-spin"} />
+        <Loader size={iconsSizes[size]} strokeWidth={1.5} className={"animate-spin"} />
       ) : (
-        <Icon size={iconsSize[size]} strokeWidth={1.5} />
+        <Icon size={iconsSizes[size]} strokeWidth={1.5} />
       )}
     </button>
   );

@@ -35,6 +35,16 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
+/* Document viewer TODO: Move to <DocumentView /> widget */
+
+.docx-wrapper {
+  @apply mx-4! bg-transparent! p-0!;
+}
+
+.docx-wrapper > section.docx {
+  @apply font-display! mb-4! aspect-[1/1.4142]! w-full! max-w-[595px]! overflow-visible! p-[24pt]! shadow-none! md:overflow-hidden! md:p-[48pt]!;
+}
+
 /* Scrollbars */
 
 ::-webkit-scrollbar {

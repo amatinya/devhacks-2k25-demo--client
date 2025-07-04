@@ -4,11 +4,13 @@ import { Folder, FileCode2, SquarePen, MessagesSquare, ChevronRight, ChevronLeft
 import clsx from "clsx";
 
 import { IconButton } from "@/shared/ui";
-import { Routes } from "@/shared/enums";
+import { Routes } from "@/shared/constants";
+import { useDocumentView } from "@/widgets/document-view";
 
 const Sidebar: FC = () => {
   const [isSidebarHidden, setIsSidebarHidden] = useState(false);
   const location = useLocation();
+  const { documentView } = useDocumentView();
 
   useEffect(() => {
     const { matches } = window.matchMedia("(max-width: 768px)");
@@ -17,6 +19,42 @@ const Sidebar: FC = () => {
       setIsSidebarHidden(true);
     }
   }, [location]);
+
+  useEffect(() => {
+    setIsSidebarHidden(documentView.state !== "inactive");
+  }, [documentView.state]);
+
+  useEffect(() => {
+    if (documentView.state === "inactive") {
+      return;
+    }
+
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const controller = new AbortController();
+
+    document.addEventListener(
+      "mousemove",
+      (e) => {
+        clearTimeout(timeoutId);
+
+        timeoutId = setTimeout(() => {
+          if (e.clientX < 16 && isSidebarHidden) {
+            setIsSidebarHidden(false);
+          }
+
+          if (e.clientX > 72 && !isSidebarHidden) {
+            setIsSidebarHidden(true);
+          }
+        }, 10);
+      },
+      { signal: controller.signal }
+    );
+
+    return () => {
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
+  }, [isSidebarHidden, documentView.state]);
 
   return (
     <>
