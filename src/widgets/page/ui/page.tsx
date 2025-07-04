@@ -1,4 +1,4 @@
-import { type ComponentProps, type FC, type PropsWithChildren } from "react";
+import type { ComponentProps, FC, PropsWithChildren } from "react";
 import clsx from "clsx";
 
 interface IPageProps {
@@ -9,7 +9,7 @@ interface IPageProps {
 const Page: FC<PropsWithChildren<IPageProps>> = ({ pageProps = {}, contentProps = {}, children }) => {
   return (
     <main {...pageProps} className={clsx("h-full max-h-screen overflow-y-auto p-4", pageProps?.className)}>
-      <div {...contentProps} className={clsx("mx-auto w-full max-w-2xl border border-white", contentProps?.className)}>
+      <div {...contentProps} className={clsx("mx-auto w-full max-w-2xl", contentProps?.className)}>
         {children}
       </div>
     </main>

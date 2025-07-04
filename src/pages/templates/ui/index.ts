@@ -1,1 +1,1 @@
-export { default as Templates } from "./templates";
+export { default as TemplatesPage } from "./templates-page.tsx";

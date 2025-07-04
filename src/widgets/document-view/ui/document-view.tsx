@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import type { FC } from "react";
 
 import { useDocumentView } from "../hooks";
 import * as Toolbars from "./toolbars";
@@ -6,6 +6,7 @@ import * as Documents from "./documents";
 
 const ComponentsMap = {
   "template-upload": { toolbar: Toolbars.TemplateUpload, document: Documents.TemplateUpload },
+  "template-preview": { toolbar: Toolbars.TemplatePreview, document: Documents.TemplatePreview },
 } as const;
 
 const DocumentPreview: FC = () => {

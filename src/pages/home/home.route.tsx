@@ -1,7 +1,5 @@
-import { type RouteObject } from "react-router";
+import type { RouteObject } from "react-router";
 
 import { Home } from "./ui";
 
-const homeRoute: RouteObject = { index: true, element: <Home /> };
-
-export default homeRoute;
+export default { index: true, element: <Home /> } as RouteObject;

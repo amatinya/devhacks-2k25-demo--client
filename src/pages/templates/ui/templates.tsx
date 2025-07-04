@@ -1,25 +1,38 @@
-import { type FC } from "react";
+import type { FC } from "react";
+import { FileSearch } from "lucide-react";
+import clsx from "clsx";
 
-import { Page } from "@/widgets/page";
-import { usePageTitle } from "@/shared/hooks";
-import { Hero } from "@/widgets/hero";
-import { UploadTemplate } from "@/features/templates";
+import { DtcSkeleton } from "@/entities/dtc-skeleton";
+import { Template } from "@/entities/template";
+
+import { useTemplatesQuery } from "../api";
 
 const Templates: FC = () => {
-  usePageTitle({ title: "Templates" });
+  const { data: templatesData, isLoading } = useTemplatesQuery();
+
+  const hasTemplates = !isLoading && templatesData && templatesData.total > 0;
+  const isEmpty = !isLoading && (!templatesData || templatesData.total === 0);
 
   return (
-    <Page contentProps={{ className: "space-y-4" }}>
-      <Hero
-        title={"Templates"}
-        backgroundImageSrc={"/bg-one.png"}
-        description={
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, sint, voluptatem. Ab animi at consequuntur, dicta dolorum enim expedita fugit illo nam officiis perferendis quis repellat, repellendus sint tempore unde!"
-        }
+    <>
+      <h2 className="mb-4 w-full text-lg font-semibold">
+        My Templates
+        {hasTemplates && ` (${templatesData.total})`}
+      </h2>
+      <div
+        className={clsx("flex h-full w-full flex-col gap-y-4", {
+          "justify-center": isEmpty,
+        })}
       >
-        <UploadTemplate />
-      </Hero>
-    </Page>
+        {isLoading ? (
+          Array.from({ length: 3 }).map((_, idx) => <DtcSkeleton key={`skeleton-${idx}`} />)
+        ) : hasTemplates ? (
+          templatesData.templates.map((template) => <Template {...template} key={template._id} />)
+        ) : (
+          <FileSearch size={64} strokeWidth={1.5} className="mx-auto mt-16 text-gray-600" />
+        )}
+      </div>
+    </>
   );
 };
 

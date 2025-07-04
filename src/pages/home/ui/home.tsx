@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import type { FC } from "react";
 
 import { Page } from "@/widgets/page";
 import { usePageTitle } from "@/shared/hooks";

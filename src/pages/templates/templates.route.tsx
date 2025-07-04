@@ -1,9 +1,7 @@
-import { type RouteObject } from "react-router";
+import type { RouteObject } from "react-router";
 
 import { Routes } from "@/shared/constants";
 
-import { Templates } from "./ui";
+import { TemplatesPage } from "./ui";
 
-const templatesRoute: RouteObject = { path: Routes.TEMPLATES, element: <Templates /> };
-
-export default templatesRoute;
+export default { path: Routes.TEMPLATES, element: <TemplatesPage /> } as RouteObject;

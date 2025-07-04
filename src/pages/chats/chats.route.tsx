@@ -1,9 +1,7 @@
-import { type RouteObject } from "react-router";
+import type { RouteObject } from "react-router";
 
 import { Routes } from "@/shared/constants";
 
 import { Chats } from "./ui";
 
-const chatsRoute: RouteObject = { path: Routes.CHATS, element: <Chats /> };
-
-export default chatsRoute;
+export default { path: Routes.CHATS, element: <Chats /> } as RouteObject;

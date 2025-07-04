@@ -1,4 +1,4 @@
-import { type Options } from "docx-preview";
+import type { Options } from "docx-preview";
 
 const documentRenderingOptions: Partial<Options> = {
   inWrapper: true,
