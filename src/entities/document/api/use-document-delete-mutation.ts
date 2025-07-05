@@ -1,0 +1,25 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { RQKeys } from "@/shared/constants";
+import { useDocumentView } from "@/widgets/document-view";
+import { axios } from "@/shared/api";
+import type { IDocument } from "@/app/types/global";
+
+const useDocumentDeleteMutation = (document: IDocument) => {
+  const { removeDocument, documentView } = useDocumentView();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn() {
+      return axios.delete(`/documents/${document._id}`);
+    },
+    async onSuccess() {
+      if (documentView.state === "document-preview" && documentView.file._id === document._id) {
+        removeDocument();
+      }
+      await queryClient.invalidateQueries({ queryKey: [RQKeys.DOCUMENTS] });
+    },
+  });
+};
+
+export default useDocumentDeleteMutation;

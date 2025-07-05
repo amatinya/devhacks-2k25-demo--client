@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "@/app/store";
 
 import {
-  type IDocumentViewState,
   type IDocumentViewTemplatePreviewState,
   type IDocumentViewDocumentPreviewState,
   type IDocumentViewTemplateUploadState,
@@ -13,7 +12,7 @@ import {
 } from "../slice";
 
 const useDocumentView = () => {
-  const documentsState = useSelector((state: RootState) => state.documentView) as IDocumentViewState;
+  const documentsState = useSelector((state: RootState) => state.documentView);
   const dispatch = useDispatch<AppDispatch>();
 
   const addDocument = useCallback(

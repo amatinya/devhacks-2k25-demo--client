@@ -2,7 +2,7 @@ import type { IDocument, ITemplate } from "@/app/types/global";
 
 export interface IDocumentViewTemplateUploadState {
   state: "template-upload";
-  file: File; // Buffer
+  file: File;
 }
 
 export interface IDocumentViewTemplatePreviewState {

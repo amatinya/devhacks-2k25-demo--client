@@ -1,1 +1,1 @@
-export { default as Documents } from "./documents";
+export { default as DocumentsPage } from "./documents-page.tsx";

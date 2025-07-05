@@ -30,15 +30,19 @@ const Template: FC<ITemplateProps> = ({ onlyView = false, ...template }) => {
       )}
     >
       <div
-        onClick={onTemplatePreview}
-        className="flex h-10 w-10 min-w-10 cursor-pointer items-center justify-center rounded-md bg-indigo-500/70"
+        onClick={deleteTemplateMutation.isPending ? undefined : onTemplatePreview}
+        className={clsx("flex h-10 w-10 min-w-10 items-center justify-center rounded-md bg-indigo-500/70", {
+          "cursor-pointer": !deleteTemplateMutation.isPending,
+        })}
       >
         <FileCode2 size={22} strokeWidth={1.5} />
       </div>
       <div className="w-full min-w-0">
         <p
-          className="flex-1 cursor-pointer truncate overflow-hidden text-sm whitespace-nowrap hover:underline"
-          onClick={onTemplatePreview}
+          className={clsx("flex-1 truncate overflow-hidden text-sm whitespace-nowrap", {
+            "cursor-pointer hover:underline": !deleteTemplateMutation.isPending,
+          })}
+          onClick={deleteTemplateMutation.isPending ? undefined : onTemplatePreview}
         >
           {template.name}
         </p>
