@@ -1,8 +1,8 @@
-import { type FC } from "react";
+import type { FC } from "react";
 import { CloudCog } from "lucide-react";
 import parseHTML from "html-react-parser";
 
-import { type IChatMessage } from "@/app/types/global";
+import type { IChatMessage } from "@/app/types/global";
 
 import MessageComponent from "./message-component";
 
