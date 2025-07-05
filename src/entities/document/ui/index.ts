@@ -1,1 +1,1 @@
-export { default as Document } from "./template";
+export { default as Document } from "./document.tsx";

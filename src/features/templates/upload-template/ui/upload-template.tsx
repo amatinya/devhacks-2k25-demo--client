@@ -1,4 +1,4 @@
-import { type FC, type ChangeEventHandler, useRef } from "react";
+import { useRef, type FC, type ChangeEventHandler } from "react";
 import { Upload } from "lucide-react";
 
 import { useDocumentView } from "@/widgets/document-view";

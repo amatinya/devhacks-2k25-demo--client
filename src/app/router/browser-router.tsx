@@ -5,6 +5,7 @@ import { homeRoute } from "@/pages/home";
 import { templatesRoute } from "@/pages/templates";
 import { documentsRoute } from "@/pages/documents";
 import { chatsRoute } from "@/pages/chats";
+import { chatRoute } from "@/pages/chat";
 
 import RootRoute from "./root-route";
 
@@ -12,7 +13,7 @@ const browserRouter = createBrowserRouter([
   {
     path: Routes.HOME,
     element: <RootRoute />,
-    children: [homeRoute, templatesRoute, documentsRoute, chatsRoute],
+    children: [homeRoute, templatesRoute, documentsRoute, chatsRoute, chatRoute],
   },
 ]);
 

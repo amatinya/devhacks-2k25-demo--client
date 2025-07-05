@@ -16,3 +16,23 @@ export interface IDocument {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IChatMessageComponent {
+  _id: string;
+  type: "template" | "document";
+  name: string;
+}
+
+export interface IChatMessage {
+  role: "user" | "assistant";
+  content: string;
+  components: IChatMessageComponent[];
+}
+
+export interface IChat {
+  _id: string;
+  name: string;
+  messages: IChatMessage[];
+  createdAt: string;
+  updatedAt: string;
+}

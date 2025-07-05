@@ -7,6 +7,7 @@ import * as Documents from "./documents";
 const ComponentsMap = {
   "template-upload": { toolbar: Toolbars.TemplateUpload, document: Documents.TemplateUpload },
   "template-preview": { toolbar: Toolbars.TemplatePreview, document: Documents.TemplatePreview },
+  "document-preview": { toolbar: Toolbars.DocumentPreview, document: Documents.DocumentPreview },
 } as const;
 
 const DocumentPreview: FC = () => {

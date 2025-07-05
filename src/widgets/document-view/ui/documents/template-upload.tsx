@@ -1,4 +1,4 @@
-import { type FC, useEffect, useRef } from "react";
+import { useEffect, useRef, type FC } from "react";
 import { renderAsync } from "docx-preview";
 
 import { useDocumentView } from "../../hooks";

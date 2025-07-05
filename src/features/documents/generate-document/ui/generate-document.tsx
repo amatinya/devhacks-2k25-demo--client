@@ -11,7 +11,7 @@ const GenerateDocument: FC = () => {
       className="flex h-10 cursor-pointer items-center gap-2 rounded-full bg-gray-50 px-4 text-xs font-medium text-gray-950 shadow-md hover:shadow-xs"
     >
       <Sparkles size={18} strokeWidth={1.5} />
-      Generate Document
+      Generate Documents
     </Link>
   );
 };

@@ -19,7 +19,9 @@ const Template: FC<ITemplateProps> = ({ onlyView = false, ...template }) => {
   const deleteTemplateMutation = useTemplateDeleteMutation(template);
 
   const onTemplatePreview = () => {
-    addDocument({ state: "template-preview", file: template });
+    if (!deleteTemplateMutation.isPending) {
+      addDocument({ state: "template-preview", file: template });
+    }
   };
 
   return (
@@ -30,7 +32,7 @@ const Template: FC<ITemplateProps> = ({ onlyView = false, ...template }) => {
       )}
     >
       <div
-        onClick={deleteTemplateMutation.isPending ? undefined : onTemplatePreview}
+        onClick={onTemplatePreview}
         className={clsx("flex h-10 w-10 min-w-10 items-center justify-center rounded-md bg-indigo-500/70", {
           "cursor-pointer": !deleteTemplateMutation.isPending,
         })}
@@ -42,7 +44,7 @@ const Template: FC<ITemplateProps> = ({ onlyView = false, ...template }) => {
           className={clsx("flex-1 truncate overflow-hidden text-sm whitespace-nowrap", {
             "cursor-pointer hover:underline": !deleteTemplateMutation.isPending,
           })}
-          onClick={deleteTemplateMutation.isPending ? undefined : onTemplatePreview}
+          onClick={onTemplatePreview}
         >
           {template.name}
         </p>

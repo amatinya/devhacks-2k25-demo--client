@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { Eye, Trash2, FileCode2 } from "lucide-react";
+import { Eye, Trash2, FileText, Download } from "lucide-react";
 import clsx from "clsx";
 
 import { IconButton } from "@/shared/ui";
@@ -19,7 +19,9 @@ const Document: FC<IDocumentProps> = ({ onlyView = false, ...document }) => {
   const deleteDocumentMutation = useDocumentDeleteMutation(document);
 
   const onDocumentPreview = () => {
-    addDocument({ state: "document-preview", file: document });
+    if (!deleteDocumentMutation.isPending) {
+      addDocument({ state: "document-preview", file: document });
+    }
   };
 
   return (
@@ -30,19 +32,19 @@ const Document: FC<IDocumentProps> = ({ onlyView = false, ...document }) => {
       )}
     >
       <div
-        onClick={deleteDocumentMutation.isPending ? undefined : onDocumentPreview}
+        onClick={onDocumentPreview}
         className={clsx("flex h-10 w-10 min-w-10 items-center justify-center rounded-md bg-indigo-500/70", {
           "cursor-pointer": !deleteDocumentMutation.isPending,
         })}
       >
-        <FileCode2 size={22} strokeWidth={1.5} />
+        <FileText size={22} strokeWidth={1.5} />
       </div>
       <div className="w-full min-w-0">
         <p
           className={clsx("flex-1 truncate overflow-hidden text-sm whitespace-nowrap", {
             "cursor-pointer hover:underline": !deleteDocumentMutation.isPending,
           })}
-          onClick={deleteDocumentMutation.isPending ? undefined : onDocumentPreview}
+          onClick={onDocumentPreview}
         >
           {document.name}
         </p>
@@ -50,6 +52,11 @@ const Document: FC<IDocumentProps> = ({ onlyView = false, ...document }) => {
       </div>
       <div className="flex items-center gap-1">
         <IconButton icon={Eye} disabled={deleteDocumentMutation.isPending} onClick={onDocumentPreview} />
+        <IconButton
+          icon={Download}
+          disabled={deleteDocumentMutation.isPending}
+          onClick={() => window.open(document.webContentLink)}
+        />
         {!onlyView && (
           <IconButton
             icon={Trash2}

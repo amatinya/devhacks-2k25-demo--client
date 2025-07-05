@@ -10,9 +10,7 @@ const useTemplateDeleteMutation = (template: ITemplate) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn() {
-      return axios.delete(`/templates/${template._id}`);
-    },
+    mutationFn: () => axios.delete(`/templates/${template._id}`),
     async onSuccess() {
       if (documentView.state === "template-preview" && documentView.file._id === template._id) {
         removeDocument();

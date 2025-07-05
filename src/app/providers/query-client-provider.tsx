@@ -3,7 +3,7 @@ import { QueryClientProvider as QueryClientProviderBase, type QueryClientProvide
 
 import { queryClient } from "@/shared/api";
 
-export const QueryClientProvider: FC<Omit<QueryClientProviderProps, "client">> = (props) => {
+const QueryClientProvider: FC<Omit<QueryClientProviderProps, "client">> = (props) => {
   return <QueryClientProviderBase client={queryClient} {...props} />;
 };
 

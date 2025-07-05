@@ -1,5 +1,7 @@
 import type { FC } from "react";
 
+// Document | Template | Chat
+
 const DtcSkeleton: FC = () => {
   return (
     <div className="flex w-full min-w-0 flex-shrink-0 items-center gap-x-2 rounded-xl border border-gray-50/20 p-2">

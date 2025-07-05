@@ -2,15 +2,25 @@ import type { FC } from "react";
 
 import { Page } from "@/widgets/page";
 import { usePageTitle } from "@/shared/hooks";
+import { Prompt } from "@/widgets/prompt";
+
+import { useStartChatMutation } from "../api";
+import Greeting from "./greeting";
 
 const Home: FC = () => {
   usePageTitle(undefined);
 
+  const startChatMutation = useStartChatMutation();
+
   return (
-    <Page>
-      {Array.from({ length: 32 }).map((_, idx) => (
-        <h1 key={idx}>{"Home"}</h1>
-      ))}
+    <Page pageProps={{ className: "flex items-center" }} contentProps={{ className: "space-y-4 " }}>
+      <Greeting />
+      <Prompt
+        onSubmit={startChatMutation.mutate}
+        className="mx-auto max-w-xl"
+        isLoading={startChatMutation.isPending}
+        placeholder={"How can Docbyte help you today?"}
+      />
     </Page>
   );
 };

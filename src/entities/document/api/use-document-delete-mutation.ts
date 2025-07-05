@@ -10,9 +10,7 @@ const useDocumentDeleteMutation = (document: IDocument) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn() {
-      return axios.delete(`/documents/${document._id}`);
-    },
+    mutationFn: () => axios.delete(`/documents/${document._id}`),
     async onSuccess() {
       if (documentView.state === "document-preview" && documentView.file._id === document._id) {
         removeDocument();
